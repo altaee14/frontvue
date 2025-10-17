@@ -1,6 +1,13 @@
 <template>
   <header>
     <nav>
+      <ul>
+        <li><router-link to="/">Главная</router-link></li>
+        <li><router-link to="/posts">Посты</router-link></li>
+        <li><router-link to="/messages">Сообщения</router-link></li>
+        <li><router-link to="/user">Профиль</router-link></li>
+      </ul>
+
       <div v-if="isAuthenticated && user">
         Welcome, {{ user.name }}
         <button @click="logout">Logout</button>
@@ -12,18 +19,17 @@
             <label for="email">Email:</label>
             <input v-model="email" type="email" id="email" required />
           </div>
-
           <div>
             <label for="password">Password:</label>
             <input v-model="password" type="password" id="password" required />
           </div>
-
           <button type="submit">Login</button>
           <p v-if="authError" class="error">{{ authError }}</p>
         </form>
       </div>
     </nav>
   </header>
+  <router-view></router-view>
 </template>
 
 <script>
