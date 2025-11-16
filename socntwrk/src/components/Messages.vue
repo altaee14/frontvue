@@ -13,7 +13,7 @@
     >
         <Column field="id" header="ID"/>
         <Column field="messageText" header="Сообщение"/>
-        <Column field="dateMessage" header="Сообщение"/>
+        <Column field="dateMessage" header="Дата"/>
 
     </DataTable>
 </template>

@@ -1,13 +1,14 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
 
-const backendUrl = 'http://127.0.0.1:8000/api'; // Используем один базовый URL
+const backendUrl = 'http://127.0.0.1:8000/api'; 
+//const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export const useAuthStore = defineStore('auth', {
     state: () => ({
         user: null,
         token: localStorage.getItem('token') || null,
-        isAuthenticated: !!localStorage.getItem('token'), // Сразу проверяем наличие токена
+        isAuthenticated: !!localStorage.getItem('token'), 
         errorMessage: ""
     }),
 
@@ -53,7 +54,6 @@ export const useAuthStore = defineStore('auth', {
                 if (error.response) {
                     this.errorMessage = error.response.data.message;
                     console.log('Get user error:', error);
-                    // Если токен невалидный - разлогиниваем
                     if (error.response.status === 401) {
                         this.logout();
                     }
